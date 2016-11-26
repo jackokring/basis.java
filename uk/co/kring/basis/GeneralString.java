@@ -21,4 +21,10 @@ public class GeneralString {
     public String toString() {
         return str;
     }
+    
+    public GeneralString fromObject(Object o) {
+        str = "Object";
+        Util.log(o, new UnsupportedOperationException("object as string not yet done"));
+        return this;
+    }
 }

@@ -24,4 +24,10 @@ public class GeneralNumber {
         }
         return this;
     }
+    
+    public GeneralNumber fromObject(Object o) {
+        num = 0;
+        Util.log(o, new UnsupportedOperationException("object as number not yet done"));
+        return this;
+    }
 }

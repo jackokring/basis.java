@@ -17,6 +17,12 @@ public class StringFormat extends Format {
         text = l.toGString();
         return this;
     }
+    
+    public List setContent(GeneralString s) {
+        StringFormat sf = new StringFormat();
+        sf.text = s;
+        return sf;
+    }
 
     @Override
     public List content() {

@@ -16,5 +16,27 @@ public abstract class Zome extends List {
     FormatList s;
     ModelDevice model;
     ViewDevice view;
-    ControlDevice control;
+    ControlDevice control;    
+
+    @Override
+    public GeneralString toGString() {
+        return new GeneralString().fromObject(this);
+    }
+
+    @Override
+    public GeneralNumber toGNumber() {
+        return new GeneralNumber().fromObject(this);
+    }
+
+    @Override
+    public List content() {
+        return new StringFormat().setContent(new GeneralString().fromObject(this));
+    }
+
+    @Override
+    public List setContent(List l) {
+        Util.log(this, new SecurityException("can' alter a zome"));
+        return this;
+    }
+    
 }
