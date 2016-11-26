@@ -21,4 +21,6 @@ public abstract class List {
         return this;
     }
     public abstract List setContent(List l);
+    public abstract GeneralString toGString();
+    public abstract GeneralNumber toGNumber();
 }
