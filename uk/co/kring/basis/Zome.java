@@ -4,6 +4,7 @@
  * A request to use this code can be sent to <jacko@kring.co.uk>.
  */
 package uk.co.kring.basis;
+import uk.co.kring.system.*;
 
 /**
  *
@@ -16,7 +17,15 @@ public abstract class Zome extends List {
     FormatList s;
     ModelDevice model;
     ViewDevice view;
-    ControlDevice control;    
+    ControlDevice control;
+
+    public abstract Zome start();
+    
+    @Override
+    public List next() {
+        //TODO
+        return new End();
+    }
 
     @Override
     public GeneralString toGString() {
@@ -35,8 +44,7 @@ public abstract class Zome extends List {
 
     @Override
     public List setContent(List l) {
-        Util.log(this, new SecurityException("can' alter a zome"));
+        Util.log(this, new SecurityException("can't alter a zome"));
         return this;
     }
-    
 }

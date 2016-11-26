@@ -13,7 +13,7 @@ public class Util {
     
     public static void log(Object c, Exception e) {
         System.err.print("TRACE: ");
+        System.err.println(e.getMessage());
         System.err.println(c.getClass().getCanonicalName());
-        e.printStackTrace(System.err);
     }
 }

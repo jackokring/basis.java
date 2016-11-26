@@ -7,7 +7,6 @@ package uk.co.kring.system;
 import uk.co.kring.basis.*;
 import com.googlecode.lanterna.terminal.*;
 import com.googlecode.lanterna.screen.*;
-import com.googlecode.lanterna.input.*;
 import java.io.IOException;
 
 /**
@@ -16,7 +15,6 @@ import java.io.IOException;
  */
 public class SystemZome extends Zome {
     static Terminal term;
-    Screen screen;
     static SystemZome dis;
     ConsoleDevice display;
     KeyboardDevice keyboard;
@@ -30,20 +28,31 @@ public class SystemZome extends Zome {
     public void enter(String[] args) {
         try {
             if(term == null) term = new DefaultTerminalFactory().createTerminal();
-            screen = new TerminalScreen(term);
-            screen.startScreen();
+            display = new ConsoleDevice(new TerminalScreen(term));
+            keyboard = new KeyboardDevice(term);
         } catch(IOException e) {
             Util.log(this, e);
         }
     }
     
+    public static void exitAll(int code) {
+        dis.exit(code);
+    }
+    
     public void exit(int code) {
         try {
-            screen.stopScreen();
+            display.destroy();
             term.flush();
         } catch(IOException e) {
             Util.log(this, e);
         }
         if(dis == this) System.exit(code);
     } 
+
+    @Override
+    public Zome start() {
+        //TODO
+        next();
+        return this;
+    }
 }
