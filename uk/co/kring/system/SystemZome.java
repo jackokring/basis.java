@@ -52,7 +52,7 @@ public class SystemZome extends Zome {
     @Override
     public Zome start() {
         //TODO
-        next();
+        nextOp();
         return this;
     }
 }

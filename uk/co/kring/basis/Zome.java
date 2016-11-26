@@ -10,7 +10,7 @@ import uk.co.kring.system.*;
  *
  * @author user
  */
-public abstract class Zome extends List {
+public abstract class Zome extends ZomeList {
     ActionList p;
     FormatList q;
     ActionList r;
@@ -21,8 +21,7 @@ public abstract class Zome extends List {
 
     public abstract Zome start();
     
-    @Override
-    public List next() {
+    public List nextOp() {
         //TODO
         return new End();
     }
