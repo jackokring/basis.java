@@ -5,20 +5,28 @@
  */
 package uk.co.kring.system;
 import uk.co.kring.basis.*;
-import com.googlecode.lanterna.terminal.*;
-import com.googlecode.lanterna.screen.*;
-import java.io.IOException;
 
 /**
  *
  * @author user
  */
 public class SystemZome extends Zome {
-    static Terminal term;
     static SystemZome dis;
-    ConsoleDevice display;
-    KeyboardDevice keyboard;
-    FileDevice disk;
+    ViewDevice display;
+    ControlDevice keyboard;
+    ModelDevice disk;
+    
+    final public ModelDevice m() {
+        return disk;
+    }
+    
+    final public ViewDevice v() {
+        return display;
+    }
+    
+    final public ControlDevice c() {
+        return keyboard;
+    }
     
     public static void main(String[] args) {
         dis = new SystemZome();
@@ -26,14 +34,9 @@ public class SystemZome extends Zome {
     }
     
     public void enter(String[] args) {
-        try {
-            if(term == null) term = new DefaultTerminalFactory().createTerminal();
-            display = new ConsoleDevice(new TerminalScreen(term));
-            keyboard = new KeyboardDevice(term);
-            disk = new FileDevice(this);
-        } catch(IOException e) {
-            Util.log(this, e);
-        }
+        display = new ConsoleDevice().init(this);
+        keyboard = new KeyboardDevice().init(this);
+        disk = new FileDevice().init(this);
     }
     
     public static void exitAll(int code) {
@@ -41,19 +44,15 @@ public class SystemZome extends Zome {
     }
     
     public void exit(int code) {
-        try {
-            display.destroy();
-            term.flush();
-        } catch(IOException e) {
-            Util.log(this, e);
-        }
+        disk.destroy();
+        keyboard.destroy();
+        display.destroy();
         if(dis == this) System.exit(code);
     } 
 
     @Override
     public Zome start() {
         //TODO
-        nextOp();
         return this;
     }
 }

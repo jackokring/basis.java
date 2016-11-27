@@ -22,6 +22,7 @@ public abstract class Zome extends ZomeList {
     public abstract Zome start();
     
     public List nextOp() {
+        start();
         //TODO
         return new End();
     }

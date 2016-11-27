@@ -12,13 +12,14 @@ import uk.co.kring.basis.*;
  */
 public class FileDevice extends ModelDevice {
 
-    public FileDevice(SystemZome zome) {
-        
+    public FileDevice init(SystemZome z) {
+        setZome(z);
+        return this;
     }
     
     @Override
-    public void destroy() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean destroy() {
+        //todo
+        return true;
     }
-    
 }

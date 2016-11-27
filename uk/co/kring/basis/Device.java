@@ -15,6 +15,13 @@ import uk.co.kring.system.*;
 public abstract class Device extends Format {
     ActionList does;
     FormatList with;
+    SystemZome zome;
+    
+    public abstract Device init(SystemZome z);
+    
+    final public Zome setZome(SystemZome z) {
+        return zome = z;
+    }
 
     @Override
     public List setContent(List l) {
@@ -38,5 +45,5 @@ public abstract class Device extends Format {
         return new GeneralNumber().fromObject(this);
     }
     
-    public abstract void destroy();
+    public abstract boolean destroy();
 }

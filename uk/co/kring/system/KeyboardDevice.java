@@ -13,14 +13,16 @@ import com.googlecode.lanterna.input.*;
  * @author user
  */
 public class KeyboardDevice extends ControlDevice {
-    Terminal term;
     
-    public KeyboardDevice(Terminal t) {
-        term = t;
+    @Override
+    public KeyboardDevice init(SystemZome z) {
+        setZome(z);
+        return this;
     }
     
     @Override
-    public void destroy() {
-        term = null;
+    public boolean destroy() {
+        //TODO
+        return true;
     }
 }
