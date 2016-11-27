@@ -11,5 +11,14 @@ import uk.co.kring.basis.*;
  * @author user
  */
 public class FileDevice extends ModelDevice {
+
+    public FileDevice(SystemZome zome) {
+        
+    }
+    
+    @Override
+    public void destroy() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

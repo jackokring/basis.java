@@ -30,6 +30,7 @@ public class SystemZome extends Zome {
             if(term == null) term = new DefaultTerminalFactory().createTerminal();
             display = new ConsoleDevice(new TerminalScreen(term));
             keyboard = new KeyboardDevice(term);
+            disk = new FileDevice(this);
         } catch(IOException e) {
             Util.log(this, e);
         }

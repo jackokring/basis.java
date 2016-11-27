@@ -11,4 +11,5 @@ package uk.co.kring.basis;
  */
 public abstract class ViewDevice extends Device {
     
+    public abstract GeneralString modelSelect(GeneralString named);
 }
