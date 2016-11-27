@@ -109,7 +109,7 @@ public class LanternaThemes {
             ClassLoader classLoader = AbstractTextGUI.class.getClassLoader();
             InputStream resourceAsStream = classLoader.getResourceAsStream(resourceFileName);
             if(resourceAsStream == null) {
-                resourceAsStream = new FileInputStream("src/main/resources/" + resourceFileName);
+                resourceAsStream = new FileInputStream("src/" + resourceFileName);
             }
             properties.load(resourceAsStream);
             resourceAsStream.close();

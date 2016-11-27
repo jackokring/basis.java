@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import uk.co.kring.system.SystemZome;
 
 /**
  *
@@ -21,6 +22,7 @@ public class Conj extends Application {
     
     @Override
     public void start(Stage primaryStage) {
+        SystemZome.main(null);
         Button btn = new Button();
         btn.setText("Say 'Hello World'");
         btn.setOnAction(new EventHandler<ActionEvent>() {

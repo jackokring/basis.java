@@ -9,7 +9,7 @@ package uk.co.kring.conj;
  *
  * @author jacko
  */
-public class Pack {
+public class Pack { /*
 
     function encodeLZW(data, bounce) {
         var dict = {};
@@ -271,8 +271,7 @@ public class Pack {
         var counts = tally(data);
         return _.reduce(counts, function(memo, count, key) {
             memo.push(key + data.substring(acc, count + acc));
-            /* adds a seek char:
-            This assists in DB seek performance as it's the ordering char for the lzw block */
+            
             acc += count;
         }, []);
     }
@@ -298,7 +297,7 @@ public class Pack {
         mix = _.map(mix, encodeBounce);
         data = {
             top: bwt.top,
-            /* tally: encode_tally(tally), */
+            
             mix: mix,
             chn: chain
         };
@@ -307,12 +306,12 @@ public class Pack {
 
     function unpack(got) {
         var top = got.top || 0;
-        /* var tally = got.tally; */
+        
         var mix = got.mix || [];
 
         mix = _.map(mix, decodeBounce);
         mix = _.reduce(mix, function(memo, lzw) {
-            /* var key = lzw.charAt(0);//get seek char */
+            
             memo += lzw.substring(1, lzw.length);//concat
         }, '');
         var chain = got.chn;
@@ -322,4 +321,5 @@ public class Pack {
             }
         return JSON.parse(res);
     }
+*/
 }
