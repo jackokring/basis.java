@@ -23,6 +23,7 @@ public class ConsoleDevice extends ViewDevice {
     Terminal term;
     Screen screen;
     MultiWindowTextGUI gui;
+    Label stat = new Label("Status Messages Here");
     
     @Override
     public ConsoleDevice init(SystemZome z) {
@@ -36,7 +37,7 @@ public class ConsoleDevice extends ViewDevice {
             screen = new TerminalScreen(term);
             screen.startScreen();
             gui = new MultiWindowTextGUI(screen, TextColor.ANSI.BLACK);
-            gui.getBackgroundPane().setComponent(new Label("Status Messages Here"));
+            gui.getBackgroundPane().setComponent(stat);
             gui.addWindowAndWait(new BasicWindow("Hello"));//TODO: Test
         } catch(IOException e) {
             Util.log(this, e);
@@ -47,13 +48,13 @@ public class ConsoleDevice extends ViewDevice {
     @Override
     public GeneralString modelSelect(GeneralString named) {
         DialogWindow fd = new FileDialog("File Select", "Select the active file", "Change",
-            screen.getTerminalSize(), true, new File(named.toString()));
+            screen.getTerminalSize(), true, new File(named == null ? "" : named.toString()));
         return new GeneralString().fromString(fd.showDialog(gui).toString());
     }
 
     @Override
     public void statusShow(GeneralString string) {
-        
+        stat.setText(string.toString());
     }
     
     @Override

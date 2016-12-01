@@ -23,4 +23,7 @@ public abstract class List {
     public abstract List setContent(List l);
     public abstract GeneralString toGString();
     public abstract GeneralNumber toGNumber();
+    
+    public abstract List dispatchInner(GeneralString a, List l);
+    public abstract List asCast(GeneralString a, List l);
 }
