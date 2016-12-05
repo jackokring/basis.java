@@ -23,6 +23,10 @@ public class ConsoleDevice extends ViewDevice {
     Terminal term;
     Screen screen;
     MultiWindowTextGUI gui;
+    
+    Panel here = new Panel();
+    Label menu = new Label("A Menu Here");
+    TextBox main = new TextBox(new TerminalSize(80, 22));
     Label stat = new Label("Status Messages Here");
     
     @Override
@@ -37,7 +41,10 @@ public class ConsoleDevice extends ViewDevice {
             screen = new TerminalScreen(term);
             screen.startScreen();
             gui = new MultiWindowTextGUI(screen, TextColor.ANSI.BLACK);
-            gui.getBackgroundPane().setComponent(stat);
+            here.add(menu);
+            here.add(main);
+            here.add(stat);
+            gui.getBackgroundPane().setComponent(here);
             gui.addWindowAndWait(new BasicWindow("Hello"));//TODO: Test
         } catch(IOException e) {
             Util.log(this, e);

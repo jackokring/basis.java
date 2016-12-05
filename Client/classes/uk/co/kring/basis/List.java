@@ -11,19 +11,27 @@ package uk.co.kring.basis;
  */
 public abstract class List {
     List chain;
+
     public abstract List content();
+
     public List next() {
-        if(chain == null) throw new RuntimeException("broken chain");
+        if (chain == null)
+            throw new RuntimeException("broken chain");
         return chain;
     }
+
     public List setNext(List l) {
         chain = l;
         return this;
     }
+
     public abstract List setContent(List l);
+
     public abstract GeneralString toGString();
+
     public abstract GeneralNumber toGNumber();
-    
+
     public abstract List dispatchInner(GeneralString a, List l);
+
     public abstract List asCast(GeneralString a, List l);
 }
