@@ -28,7 +28,11 @@ public class ConsoleDevice extends ViewDevice {
     Label menu = new Label("A Menu Here");
     TextBox main = new TextBox(new TerminalSize(80, 22));
     Label stat = new Label("Status Messages Here");
-    
+
+    /**
+     * @param z
+     * @return
+     */
     @Override
     public ConsoleDevice init(SystemZome z) {
         setZome(z);
@@ -41,9 +45,9 @@ public class ConsoleDevice extends ViewDevice {
             screen = new TerminalScreen(term);
             screen.startScreen();
             gui = new MultiWindowTextGUI(screen, TextColor.ANSI.BLACK);
-            here.add(menu);
-            here.add(main);
-            here.add(stat);
+            here.addComponent(menu);
+            here.addComponent(main);
+            here.addComponent(stat);
             gui.getBackgroundPane().setComponent(here);
             gui.addWindowAndWait(new BasicWindow("Hello"));//TODO: Test
         } catch(IOException e) {
@@ -52,6 +56,10 @@ public class ConsoleDevice extends ViewDevice {
         return this;
     }
 
+    /**
+     * @param named
+     * @return
+     */
     @Override
     public GeneralString modelSelect(GeneralString named) {
         DialogWindow fd = new FileDialog("File Select", "Select the active file", "Change",
@@ -59,11 +67,17 @@ public class ConsoleDevice extends ViewDevice {
         return new GeneralString().fromString(fd.showDialog(gui).toString());
     }
 
+    /**
+     * @param string
+     */
     @Override
     public void statusShow(GeneralString string) {
         stat.setText(string.toString());
     }
-    
+
+    /**
+     * @return
+     */
     @Override
     public boolean destroy() {
         boolean ok = true;

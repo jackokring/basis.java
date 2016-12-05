@@ -15,41 +15,65 @@ public class SystemZome extends Zome {
     ViewDevice display;
     ControlDevice keyboard;
     ModelDevice disk;
-    
-    final public ModelDevice m() {
+
+    /**
+     * @return
+     */
+    public final ModelDevice m() {
         return disk;
     }
-    
-    final public ViewDevice v() {
+
+    /**
+     * @return
+     */
+    public final ViewDevice v() {
         return display;
     }
-    
-    final public ControlDevice c() {
+
+    /**
+     * @return
+     */
+    public final ControlDevice c() {
         return keyboard;
     }
-    
+
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         dis = new SystemZome();
         dis.enter(args);
     }
-    
+
+    /**
+     * @param args
+     */
     public void enter(String[] args) {
         display = new ConsoleDevice().init(this);
         keyboard = new KeyboardDevice().init(this);
         disk = new FileDevice().init(this);
     }
-    
+
+    /**
+     * @param code
+     */
     public static void exitAll(int code) {
         dis.exit(code);
     }
-    
+
+    /**
+     * @param code
+     */
     public void exit(int code) {
         disk.destroy();
         keyboard.destroy();
         display.destroy();
         if(dis == this) System.exit(code);
-    } 
+    }
 
+    /**
+     * @return
+     */
     @Override
     public Zome start() {
         //TODO

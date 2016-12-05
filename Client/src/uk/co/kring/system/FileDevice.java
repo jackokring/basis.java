@@ -12,11 +12,18 @@ import uk.co.kring.basis.*;
  */
 public class FileDevice extends ModelDevice {
 
+    /**
+     * @param z
+     * @return
+     */
     public FileDevice init(SystemZome z) {
         setZome(z);
         return this;
     }
-    
+
+    /**
+     * @return
+     */
     @Override
     public boolean destroy() {
         //todo
